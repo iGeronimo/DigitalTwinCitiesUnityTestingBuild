@@ -592,7 +592,9 @@ public class GridSpawner : EditorWindow
         cellObject.transform.parent = parent.transform;
         cellObject.AddComponent<TileParameters>();
         cellObject.AddComponent<BoxCollider>();
-        //SET POSITION OF THE CELLS TO WORLD SPACE SO WE CAN ADD CHILD VISUAL FEEDBACK
+        cellObject.AddComponent<NeighbourTileDetection>();
+        cellObject.tag = "Tile";
+        
         
     }
 
