@@ -163,6 +163,7 @@ public class GridSpawner : EditorWindow
         parentCell.AddComponent<SetTiles>();
         parentCell.GetComponent<SetTiles>().rows = rowsGrid;
         parentCell.GetComponent<SetTiles>().cols = columnsGrid;
+        parentCell.AddComponent<HousePoints>();
 
         // Calculates the amount of cells that need to have a prefab present
         cellAmount = Mathf.Round((float)columnsGrid * (float)rowsGrid / 100 * (float)amountRandom);

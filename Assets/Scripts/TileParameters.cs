@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TileParameters : MonoBehaviour
@@ -14,10 +15,10 @@ public class TileParameters : MonoBehaviour
         PARK = 5
     };
 
-    public tileType TileType = tileType.ROAD;
+    public tileType TileType = tileType.NOTHING;
     public int tileScore = 0;
     public int tileScoreMax = 10;
-    public int tileRange = 2;
+    public int tileRange = 3;
     public bool tileChecked = false;
 
     private tileType lastTileType;
@@ -28,7 +29,7 @@ public class TileParameters : MonoBehaviour
 
     [Header("Tile Colors")]
     public Color HouseColor = Color.magenta;
-    public Color RoadColor = Color.white;
+    public Color RoadColor = Color.black;
     public Color StoreColor = Color.cyan;
     public Color HospitalColor = Color.red;
     public Color ParkColor = Color.green;
@@ -40,6 +41,7 @@ public class TileParameters : MonoBehaviour
     private void Start()
     {
         GetComponentInChildren<IconManager>().ChangeScore(tileScore);
+        SetTileColor();
     }
 
     private void Update()
