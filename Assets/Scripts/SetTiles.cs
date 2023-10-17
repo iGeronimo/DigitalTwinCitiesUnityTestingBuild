@@ -30,7 +30,6 @@ public class SetTiles : MonoBehaviour
         {
             if(roads.TileType == TileParameters.tileType.ROAD)
             {
-                Debug.Log("Resetting " + roads.name + " to 0");
                 roads.tileScore = 0;
                 roads.HospitalPoints = false;
                 roads.StorePoints = false;
@@ -88,8 +87,6 @@ public class SetTiles : MonoBehaviour
 
             //Empty the tile list
             tileList.Clear();
-
-            Debug.Log(lastTileList + " tile data");
 
             //Now keep doing this for the rest of the range
             for(int i = range -1; i > 0; i--)
