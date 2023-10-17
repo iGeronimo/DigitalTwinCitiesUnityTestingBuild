@@ -17,8 +17,14 @@ public class TileParameters : MonoBehaviour
     public tileType TileType = tileType.ROAD;
     public int tileScore = 0;
     public int tileScoreMax = 10;
+    public int tileRange = 2;
+    public bool tileChecked = false;
 
     private tileType lastTileType;
+
+    public bool HospitalPoints = false;
+    public bool ParkPoints = false;
+    public bool StorePoints = false;
 
     [Header("Tile Colors")]
     public Color HouseColor = Color.magenta;
@@ -44,6 +50,7 @@ public class TileParameters : MonoBehaviour
             //GetComponentInParent<SetTiles>().CheckTilesInRange();
             SetTileColor();
             GetComponentInChildren<IconManager>().ChangeIcon();
+            
 
             lastTileType = TileType;
         }
@@ -53,38 +60,43 @@ public class TileParameters : MonoBehaviour
     {
         if(TileType == tileType.NOTHING)
         {
-            GetComponent<Transform>().GetComponent<MeshRenderer>().material.color = NothingColor;
+            transform.GetComponent<MeshRenderer>().material.color = NothingColor;
         }
 
         if (TileType == tileType.ROAD)
         {
-            GetComponent<Transform>().GetComponent<MeshRenderer>().material.color = RoadColor;
+            transform.GetComponent<MeshRenderer>().material.color = RoadColor;
             return;
         }
 
         if (TileType == tileType.HOUSE)
         {
-            GetComponent<Transform>().GetComponent<MeshRenderer>().material.color = HouseColor;
+            transform.GetComponent<MeshRenderer>().material.color = HouseColor;
             return;
         }
 
         if (TileType == tileType.STORE)
         {
-            GetComponent<Transform>().GetComponent<MeshRenderer>().material.color = StoreColor;
+            transform.GetComponent<MeshRenderer>().material.color = StoreColor;
             return;
         }
 
         if (TileType == tileType.PARK)
         {
-            GetComponent<Transform>().GetComponent<MeshRenderer>().material.color = ParkColor;
+            transform.GetComponent<MeshRenderer>().material.color = ParkColor;
             return;
         }
 
         if (TileType == tileType.HOSPITAL)
         {
-            GetComponent<Transform>().GetComponent<MeshRenderer>().material.color = HospitalColor;
+            transform.GetComponent<MeshRenderer>().material.color = HospitalColor;
             return;
         }
+    }
+
+    public void OverrideTileColour(Color color)
+    {
+        transform.GetComponent<MeshRenderer>().material.color = color;
     }
 
     void OnClick()
@@ -104,6 +116,8 @@ public class TileParameters : MonoBehaviour
                     {
                         TileType++;
                     }
+                    //After tile has been clicked we start setting the scores again
+                    GetComponentInParent<SetTiles>().SetTileScore(tileRange);
                 }
             }
         }

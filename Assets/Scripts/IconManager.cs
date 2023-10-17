@@ -15,18 +15,6 @@ public class IconManager : MonoBehaviour
 
     public TMP_Text ScoreText;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ChangeIcon()
     {
         DisableIcons();
@@ -54,7 +42,6 @@ public class IconManager : MonoBehaviour
 
     public void ChangeScore(int score)
     {
-        Debug.Log("Bing");
         ScoreText.text = score.ToString();
     }
 
