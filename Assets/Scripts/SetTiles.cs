@@ -8,7 +8,6 @@ using UnityEngine.UIElements;
 
 public class SetTiles : MonoBehaviour
 {
-    Transform[] tiles;
     public int rows;
     public int cols;
 

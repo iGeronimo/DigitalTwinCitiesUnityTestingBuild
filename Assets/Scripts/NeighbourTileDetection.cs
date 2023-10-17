@@ -7,13 +7,11 @@ public class NeighbourTileDetection : MonoBehaviour
 
     public float overlapCheckRange = 1.1f;
     Transform currentPosition;
-    TileParameters tileParameters;
 
     // Start is called before the first frame update
     void Start()
     {
         currentPosition = GetComponentInChildren<IconManager>().transform;
-        tileParameters = GetComponent<TileParameters>();
     }
 
     // Update is called once per frame
